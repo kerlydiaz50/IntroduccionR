@@ -1,0 +1,70 @@
+---
+title: "IntroduccionR"
+author: "Kerly Díaz"
+date: '2022-02-26'
+output: 
+  html_document:
+    self_contained: true
+    fig_height: 6
+    fight_width: 8
+    theme: journal
+    highlight: zenburn
+    toc: yes
+    toc_depht: 4
+    toc_float:
+      collapsed: no
+      smooth_scroll: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## TAREA 1: TIPOS DE DATOS
+
+### 1.1. Crear un identificador de nombre "ciudad" y asigne como valor el nombre de alguna ciudad
+
+```{r}
+ciudad <- "Nueva Loja"
+print(ciudad)
+```
+
+### 1.2. Crear un identificador de nombre "pais_andes" y asigne como valor los nombres de los países por donde cruza la cordillera de Los Andes
+```{r}
+pais_andes <- "Venezuela, Argentina, Colombia, Ecuador, Perú, Bolivia, Chile"
+print(pais_andes)
+```
+
+### 1.3. Crear un dataframe con 12 eventos (files) y 5 variables (columnas), cada columna debe tener diferentes tipos de datos (entero, decimal, caracter, logico)
+```{r}
+edad <- c(22, 34, 29, 25, 30, 33, 31, 27, 25, 25, 24, 21) #Entero
+sexo <- c("M","H","H","M","M","H","M","M","H","H","M","H") #caracter
+altura <- c(1.57, 1.68, 1.65, 1.73, 1.69, 1.78, 1.70, 1.63, 1.58, 1.60, 1.71, 1.75) #Decimal
+carrera <- c("Biología","Matemática","Geología","Biotecnología","Física","Matemática", #Caracter
+             "Biomedicina","Nanotecnología","Historia","Turismo","Ecosistemas","Enfermería")
+calificacion <- sample(0:10, 12, replace = TRUE) #logico
+Informacion <- data.frame(edad,sexo,altura,carrera,calificacion)
+Informacion
+```
+
+### 1.4. Cargue el dataset "DNase" e identifique su estructura. Extraiga (subset) los datos que cumplan con las condiciones de:
+```{r}
+?DNase
+
+str(DNase) # Estructura del dataset
+```
+
+### 1.4.1. "conc" (concentracion) entre 0.1 y 0.2
+```{r}
+?DNase
+concentracion <- subset(DNase, conc >= 0.1 & conc <= 0.2)
+print(concentracion)
+```
+
+
+### 1.4.2. "Run" diferente a 2, "conc" mayor a 0.2 y "density" menor o igual a 1.0
+```{r}
+?DNase
+tabla <- subset(DNase, Run != 2 & conc > 0.2 & density <= 1.0)
+print(tabla)
+```
